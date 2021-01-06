@@ -5,8 +5,6 @@
   "author": "typhonrt",
   "bugs": "https://github.com/typhonjs-node-rollup/issues/issues",
   "dependencies": {
-    "@oclif/command": "^1.8.0",
-    "@typhonjs-node-bundle/oclif-commons": "typhonjs-node-bundle/oclif-commons#main",
     "@typhonjs-node-rollup/plugin-alias": "typhonjs-node-rollup/plugin-alias#main",
     "@typhonjs-node-rollup/plugin-babel": "typhonjs-node-rollup/plugin-babel#main",
     "@typhonjs-node-rollup/plugin-json": "typhonjs-node-rollup/plugin-json#main",
