@@ -39,18 +39,70 @@ module.exports = async function(options)
    {
       global.$$eventbus.trigger('log:debug', `plugin-bundle-core init hook running '${options.id}'.`);
 
-      let message = 'plugin-bundle-core - Attempting to load the following Oclif Rollup plugins:\n';
-      for (const loader of s_LOADERS)
+      const noConflictLoaders = s_FIND_NO_CONFLICT_LOADERS(s_LOADERS, options);
+
+      for (const loader of noConflictLoaders)
       {
-         message += `${loader.pluginName} - ${JSON.stringify(loader.rollupPlugins)}\n`;
+         global.$$eventbus.trigger('log:info', `loading '${loader.pluginName}'.`);
+         global.$$pluginManager.add({ name: loader.pluginName, instance: loader, options });
       }
-      global.$$eventbus.trigger('log:verbose', message);
-
-      // global.$$pluginManager.add({ name: '@typhonjs-node-rollup/plugin-alias', instance: PluginHandler });
-
    }
    catch (error)
    {
       this.error(error);
    }
 };
+
+/**
+ * Finds all bundled plugin loaders which don't conflict with other plugins.
+ *
+ * @param {Array}    loaders -
+ * @param {object}   options -
+ *
+ * @returns {Object[]} Array of bundled plugin loaders that don't conflict with other Oclif plugins.
+ */
+function s_FIND_NO_CONFLICT_LOADERS(loaders, options)
+{
+   const noConflictLoaders = [];
+
+   // Options doesn't contain plugin array so return all loaders.
+   if (typeof options !== 'object' && typeof options.config !== 'object' && !Array.isArray(options.config.plugins))
+   {
+      return loaders;
+   }
+
+   let warning = 'plugin-bundle-core - Aborted loading the following bundled plugins as duplicates detected:\n';
+
+   for (const loader of s_LOADERS)
+   {
+      let conflict = false;
+
+      for (const oclifPlugin of options.config.plugins)
+      {
+         if (typeof oclifPlugin.pjson === 'object' && typeof oclifPlugin.pjson.dependencies === 'object')
+         {
+            for (const rollupPlugin of loader.rollupPlugins)
+            {
+               if (rollupPlugin in oclifPlugin.pjson.dependencies)
+               {
+                  conflict = true;
+                  warning += `- ${loader.pluginName} conflicts with ${oclifPlugin.type} ${oclifPlugin.pjson.name}\n`;
+                  break;
+               }
+            }
+         }
+      }
+
+      if (!conflict)
+      {
+         noConflictLoaders.push(loader);
+      }
+   }
+
+   if (warning !== 'plugin-bundle-core - Aborted loading the following bundled plugins as duplicates detected:\n')
+   {
+      global.$$eventbus.trigger('log:verbose', warning);
+   }
+
+   return noConflictLoaders;
+}
