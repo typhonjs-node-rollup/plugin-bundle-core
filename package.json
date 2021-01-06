@@ -1,0 +1,58 @@
+{
+  "name": "@typhonjs-node-rollup/plugin-bundle-core",
+  "description": "Provides a single Oclif plugin combining all of the core Rollup plugins.",
+  "version": "0.0.0",
+  "author": "typhonrt",
+  "bugs": "https://github.com/typhonjs-node-rollup/issues/issues",
+  "dependencies": {
+    "@oclif/command": "^1.8.0",
+    "@typhonjs-node-bundle/oclif-commons": "typhonjs-node-bundle/oclif-commons#main",
+    "@typhonjs-node-rollup/plugin-alias": "typhonjs-node-rollup/plugin-alias#main",
+    "@typhonjs-node-rollup/plugin-babel": "typhonjs-node-rollup/plugin-babel#main",
+    "@typhonjs-node-rollup/plugin-json": "typhonjs-node-rollup/plugin-json#main",
+    "@typhonjs-node-rollup/plugin-node-resolve": "typhonjs-node-rollup/plugin-node-resolve#main",
+    "@typhonjs-node-rollup/plugin-postcss": "typhonjs-node-rollup/plugin-postcss#main",
+    "@typhonjs-node-rollup/plugin-replace": "typhonjs-node-rollup/plugin-replace#main",
+    "@typhonjs-node-rollup/plugin-sourcemaps": "typhonjs-node-rollup/plugin-sourcemaps#main",
+    "@typhonjs-node-rollup/plugin-string": "typhonjs-node-rollup/plugin-string#main",
+    "@typhonjs-node-rollup/plugin-terser": "typhonjs-node-rollup/plugin-terser#main",
+    "@typhonjs-node-rollup/plugin-typescript": "typhonjs-node-rollup/plugin-typescript#main",
+    "rollup": "^2.0.0"
+  },
+  "devDependencies": {
+    "@oclif/dev-cli": "^1.26.0",
+    "@oclif/plugin-help": "^3.2.1",
+    "@oclif/test": "^1.2.8",
+    "chai": "^4.2.0",
+    "eslint": "^5.16.0",
+    "globby": "^10.0.2",
+    "mocha": "^5.2.0",
+    "nyc": "^14.1.1",
+    "typhonjs-config-eslint": "^0.6.0"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "files": [
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json",
+    "/src"
+  ],
+  "homepage": "https://github.com/typhonjs-node-rollup/plugin-bundle-core",
+  "keywords": [
+    "oclif-plugin"
+  ],
+  "license": "MPL-2.0",
+  "oclif": {
+    "hooks": {
+      "init": [
+        "./src/hooks/init/init"
+      ]
+    }
+  },
+  "repository": "typhonjs-node-rollup/plugin-bundle-core",
+  "scripts": {
+    "eslint": "eslint .",
+    "test": "nyc mocha --forbid-only \"test/**/*.test.js\""
+  }
+}
