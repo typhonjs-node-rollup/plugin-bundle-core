@@ -26,6 +26,9 @@ const s_LOADERS = [
    require('@typhonjs-node-rollup/plugin-terser')
 ];
 
+const s_NO_CONFLICT_WARNING = '@typhonjs-node-rollup/plugin-bundle-core - Aborted loading the following bundled '
+ + 'plugins as duplicates detected:\n';
+
 /**
  * Oclif init hook to add PluginHandler to plugin manager.
  *
@@ -41,10 +44,19 @@ module.exports = async function(options)
 
       const noConflictLoaders = s_FIND_NO_CONFLICT_LOADERS(s_LOADERS, options);
 
+      let loaded = '';
+
       for (const loader of noConflictLoaders)
       {
-         global.$$eventbus.trigger('log:info', `loading '${loader.pluginName}'.`);
-         global.$$pluginManager.add({ name: loader.pluginName, instance: loader, options });
+         loaded += `- ${loader.packageName}\n`;
+
+         global.$$pluginManager.add({ name: loader.packageName, instance: loader });
+      }
+
+      if (loaded !== '')
+      {
+         global.$$eventbus.trigger('log:verbose',
+          `@typhonjs-node-rollup/plugin-bundle-core - Loaded the following bundled plugins: \n${loaded}`);
       }
    }
    catch (error)
@@ -71,7 +83,7 @@ function s_FIND_NO_CONFLICT_LOADERS(loaders, options)
       return loaders;
    }
 
-   let warning = 'plugin-bundle-core - Aborted loading the following bundled plugins as duplicates detected:\n';
+   let warning = s_NO_CONFLICT_WARNING;
 
    for (const loader of s_LOADERS)
    {
@@ -81,12 +93,12 @@ function s_FIND_NO_CONFLICT_LOADERS(loaders, options)
       {
          if (typeof oclifPlugin.pjson === 'object' && typeof oclifPlugin.pjson.dependencies === 'object')
          {
-            for (const rollupPlugin of loader.rollupPlugins)
+            for (const conflictPackage of loader.conflictPackages)
             {
-               if (rollupPlugin in oclifPlugin.pjson.dependencies)
+               if (conflictPackage in oclifPlugin.pjson.dependencies)
                {
                   conflict = true;
-                  warning += `- ${loader.pluginName} conflicts with ${oclifPlugin.type} ${oclifPlugin.pjson.name}\n`;
+                  warning += `- ${loader.packageName} conflicts with ${oclifPlugin.type} ${oclifPlugin.pjson.name}\n`;
                   break;
                }
             }
@@ -99,7 +111,7 @@ function s_FIND_NO_CONFLICT_LOADERS(loaders, options)
       }
    }
 
-   if (warning !== 'plugin-bundle-core - Aborted loading the following bundled plugins as duplicates detected:\n')
+   if (warning !== s_NO_CONFLICT_WARNING)
    {
       global.$$eventbus.trigger('log:verbose', warning);
    }
