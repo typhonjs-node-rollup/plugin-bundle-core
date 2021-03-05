@@ -13,17 +13,28 @@ const s_LOADERS = [
 ];
 */
 
+import pluginReplace       from '@typhonjs-node-rollup/plugin-replace';
+import pluginAlias         from '@typhonjs-node-rollup/plugin-alias';
+import pluginBabel         from '@typhonjs-node-rollup/plugin-babel';
+import pluginJSON          from '@typhonjs-node-rollup/plugin-json';
+import pluginNodeResolve   from '@typhonjs-node-rollup/plugin-node-resolve';
+import pluginPostCSS       from '@typhonjs-node-rollup/plugin-postcss';
+import pluginString        from '@typhonjs-node-rollup/plugin-string';
+import pluginTypescript    from '@typhonjs-node-rollup/plugin-typescript';
+import pluginSourcemaps    from '@typhonjs-node-rollup/plugin-sourcemaps';
+import pluginTerser        from '@typhonjs-node-rollup/plugin-terser';
+
 const s_LOADERS = [
-   require('@typhonjs-node-rollup/plugin-replace'),
-   require('@typhonjs-node-rollup/plugin-alias'),
-   require('@typhonjs-node-rollup/plugin-babel'),
-   require('@typhonjs-node-rollup/plugin-json'),
-   require('@typhonjs-node-rollup/plugin-node-resolve'),
-   require('@typhonjs-node-rollup/plugin-postcss'),
-   require('@typhonjs-node-rollup/plugin-string'),
-   require('@typhonjs-node-rollup/plugin-typescript'),
-   require('@typhonjs-node-rollup/plugin-sourcemaps'),
-   require('@typhonjs-node-rollup/plugin-terser')
+   pluginReplace,
+   pluginAlias,
+   pluginBabel,
+   pluginJSON,
+   pluginNodeResolve,
+   pluginPostCSS,
+   pluginString,
+   pluginTypescript,
+   pluginSourcemaps,
+   pluginTerser
 ];
 
 const s_NO_CONFLICT_WARNING = '@typhonjs-node-rollup/plugin-bundle-core - Aborted loading the following bundled '
@@ -36,7 +47,7 @@ const s_NO_CONFLICT_WARNING = '@typhonjs-node-rollup/plugin-bundle-core - Aborte
  *
  * @returns {Promise<void>}
  */
-module.exports = async function(options)
+export default async function(options)
 {
    try
    {
@@ -63,7 +74,7 @@ module.exports = async function(options)
    {
       this.error(error);
    }
-};
+}
 
 /**
  * Finds all bundled plugin loaders which don't conflict with other plugins.

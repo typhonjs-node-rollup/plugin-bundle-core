@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "author": "typhonrt",
   "bugs": "https://github.com/typhonjs-node-rollup/issues/issues",
+  "type": "module",
   "dependencies": {
     "@typhonjs-node-rollup/plugin-alias": "typhonjs-node-rollup/plugin-alias#main",
     "@typhonjs-node-rollup/plugin-babel": "typhonjs-node-rollup/plugin-babel#main",
@@ -29,7 +30,7 @@
     "typhonjs-config-eslint": "^0.6.0"
   },
   "engines": {
-    "node": ">=8.0.0"
+    "node": ">=14.0.0"
   },
   "files": [
     "/npm-shrinkwrap.json",
