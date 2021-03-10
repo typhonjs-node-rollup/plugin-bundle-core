@@ -1,29 +1,15 @@
-/* TODO: ONCE WE WORK OUT PLUGIN WEIGHTING / ORDERING WE CAN LOAD ALPHABETICALLY
-const s_LOADERS = [
-   require('@typhonjs-node-rollup/plugin-alias'),
-   require('@typhonjs-node-rollup/plugin-babel'),
-   require('@typhonjs-node-rollup/plugin-json'),
-   require('@typhonjs-node-rollup/plugin-node-resolve'),
-   require('@typhonjs-node-rollup/plugin-postcss'),
-   require('@typhonjs-node-rollup/plugin-replace'),
-   require('@typhonjs-node-rollup/plugin-sourcemaps'),
-   require('@typhonjs-node-rollup/plugin-string'),
-   require('@typhonjs-node-rollup/plugin-terser'),
-   require('@typhonjs-node-rollup/plugin-typescript'),
-];
-*/
-
-import pluginReplace       from '@typhonjs-node-rollup/plugin-replace';
 import pluginAlias         from '@typhonjs-node-rollup/plugin-alias';
 import pluginBabel         from '@typhonjs-node-rollup/plugin-babel';
 import pluginJSON          from '@typhonjs-node-rollup/plugin-json';
 import pluginNodeResolve   from '@typhonjs-node-rollup/plugin-node-resolve';
 import pluginPostCSS       from '@typhonjs-node-rollup/plugin-postcss';
-import pluginString        from '@typhonjs-node-rollup/plugin-string';
-import pluginTypescript    from '@typhonjs-node-rollup/plugin-typescript';
+import pluginReplace       from '@typhonjs-node-rollup/plugin-replace';
 import pluginSourcemaps    from '@typhonjs-node-rollup/plugin-sourcemaps';
+import pluginString        from '@typhonjs-node-rollup/plugin-string';
 import pluginTerser        from '@typhonjs-node-rollup/plugin-terser';
+import pluginTypescript    from '@typhonjs-node-rollup/plugin-typescript';
 
+// TODO: ONCE WE WORK OUT PLUGIN WEIGHTING / ORDERING WE CAN LOAD ALPHABETICALLY
 const s_LOADERS = [
    pluginReplace,
    pluginAlias,
@@ -61,7 +47,7 @@ export default async function(options)
       {
          loaded += `- ${loader.packageName}\n`;
 
-         global.$$pluginManager.add({ name: loader.packageName, instance: loader });
+         global.$$pluginManager.add({ name: loader.packageName, instance: loader, options });
       }
 
       if (loaded !== '')
@@ -91,6 +77,9 @@ function s_FIND_NO_CONFLICT_LOADERS(loaders, options)
    // Options doesn't contain plugin array so return all loaders.
    if (typeof options !== 'object' && typeof options.config !== 'object' && !Array.isArray(options.config.plugins))
    {
+      global.$$eventbus.trigger('log:debug',
+       `plugin-bundle-core init hook: could not find 'options.config.plugins' - no conflict check.`);
+
       return loaders;
    }
 
