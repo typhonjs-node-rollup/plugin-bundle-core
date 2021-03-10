@@ -47,7 +47,8 @@ export default async function(options)
       {
          loaded += `- ${loader.packageName}\n`;
 
-         global.$$pluginManager.add({ name: loader.packageName, instance: loader, options });
+         global.$$pluginManager.add({ name: loader.packageName, instance: loader,
+          options: { id: options.id, flags: options.flags } });
       }
 
       if (loaded !== '')
