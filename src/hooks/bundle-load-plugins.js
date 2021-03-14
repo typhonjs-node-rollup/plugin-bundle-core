@@ -23,8 +23,8 @@ const s_LOADERS = [
    pluginTerser
 ];
 
-const s_NO_CONFLICT_WARNING = '@typhonjs-node-rollup/plugin-bundle-core - Aborted loading the following bundled '
- + 'plugins as duplicates detected:\n';
+const s_NO_CONFLICT_WARNING = '@typhonjs-node-rollup/plugin-bundle-core - Aborted loading the following bundled ' +
+ 'plugins as duplicates detected:\n';
 
 /**
  * Oclif init hook to add PluginHandler to plugin manager.
@@ -37,7 +37,7 @@ export default async function(options)
 {
    try
    {
-      global.$$eventbus.trigger('log:debug', `plugin-bundle-core init hook running '${options.id}'.`);
+      globalThis.$$eventbus.trigger('log:debug', `plugin-bundle-core init hook running '${options.id}'.`);
 
       const noConflictLoaders = s_FIND_NO_CONFLICT_LOADERS(s_LOADERS, options);
 
@@ -47,13 +47,13 @@ export default async function(options)
       {
          loaded += `- ${loader.packageName}\n`;
 
-         await global.$$pluginManager.addAsync({ name: loader.packageName, instance: loader,
+         await globalThis.$$pluginManager.addAsync({ name: loader.packageName, instance: loader,
           options: { id: options.id, flagsModule: options.flagsModule } });
       }
 
       if (loaded !== '')
       {
-         global.$$eventbus.trigger('log:verbose',
+         globalThis.$$eventbus.trigger('log:verbose',
           `@typhonjs-node-rollup/plugin-bundle-core - Loaded the following bundled plugins: \n${loaded}`);
       }
    }
@@ -78,7 +78,7 @@ function s_FIND_NO_CONFLICT_LOADERS(loaders, options)
    // Options doesn't contain plugin array so return all loaders.
    if (typeof options !== 'object' && typeof options.config !== 'object' && !Array.isArray(options.config.plugins))
    {
-      global.$$eventbus.trigger('log:debug',
+      globalThis.$$eventbus.trigger('log:debug',
        `plugin-bundle-core init hook: could not find 'options.config.plugins' - no conflict check.`);
 
       return loaders;
@@ -114,7 +114,7 @@ function s_FIND_NO_CONFLICT_LOADERS(loaders, options)
 
    if (warning !== s_NO_CONFLICT_WARNING)
    {
-      global.$$eventbus.trigger('log:verbose', warning);
+      globalThis.$$eventbus.trigger('log:verbose', warning);
    }
 
    return noConflictLoaders;

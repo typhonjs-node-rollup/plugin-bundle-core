@@ -5,6 +5,13 @@
   "author": "typhonrt",
   "bugs": "https://github.com/typhonjs-node-rollup/issues/issues",
   "type": "module",
+  "maintainers": [
+    {
+      "name": "Michael Leahy",
+      "email": "support@typhonjs.io",
+      "url": "https://github.com/typhonrt"
+    }
+  ],
   "dependencies": {
     "@typhonjs-node-rollup/plugin-alias": "typhonjs-node-rollup/plugin-alias#main",
     "@typhonjs-node-rollup/plugin-babel": "typhonjs-node-rollup/plugin-babel#main",
@@ -19,19 +26,20 @@
     "rollup": "^2.0.0"
   },
   "devDependencies": {
-    "eslint": "^7.0.0",
-    "typhonjs-config-eslint": "^0.6.0"
+    "@typhonjs-config/eslint-config": "^0.1.0",
+    "eslint": "^7.0.0"
   },
   "engines": {
     "node": ">=14.0.0"
   },
   "files": [
     "/npm-shrinkwrap.json",
-    "/oclif.manifest.json",
     "/src"
   ],
   "homepage": "https://github.com/typhonjs-node-rollup/plugin-bundle-core",
   "keywords": [
+    "typhonjs",
+    "rollup",
     "oclif-plugin"
   ],
   "license": "MPL-2.0",
@@ -45,6 +53,6 @@
   "repository": "typhonjs-node-rollup/plugin-bundle-core",
   "scripts": {
     "eslint": "eslint .",
-    "test": "nyc mocha --forbid-only \"test/**/*.test.js\""
+    "prepack": "npm run eslint"
   }
 }
