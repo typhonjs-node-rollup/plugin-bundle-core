@@ -1,7 +1,7 @@
 {
   "name": "@typhonjs-node-rollup/plugin-bundle-core",
   "description": "Provides a single Oclif plugin combining all of the core Rollup plugins.",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "author": "typhonrt",
   "bugs": "https://github.com/typhonjs-node-rollup/issues/issues",
   "type": "module",
@@ -13,20 +13,20 @@
     }
   ],
   "dependencies": {
-    "@typhonjs-node-rollup/plugin-alias": "^0.0.0",
-    "@typhonjs-node-rollup/plugin-babel": "^0.0.0",
-    "@typhonjs-node-rollup/plugin-json": "^0.0.0",
-    "@typhonjs-node-rollup/plugin-node-resolve": "^0.0.0",
-    "@typhonjs-node-rollup/plugin-postcss": "^0.0.0",
-    "@typhonjs-node-rollup/plugin-replace": "^0.0.0",
-    "@typhonjs-node-rollup/plugin-sourcemaps": "^0.0.0",
-    "@typhonjs-node-rollup/plugin-string": "^0.0.0",
-    "@typhonjs-node-rollup/plugin-terser": "^0.0.0",
-    "@typhonjs-node-rollup/plugin-typescript": "^0.0.0",
+    "@typhonjs-node-rollup/plugin-alias": "^0.0.1",
+    "@typhonjs-node-rollup/plugin-babel": "^0.0.1",
+    "@typhonjs-node-rollup/plugin-json": "^0.0.1",
+    "@typhonjs-node-rollup/plugin-node-resolve": "^0.0.1",
+    "@typhonjs-node-rollup/plugin-postcss": "^0.0.1",
+    "@typhonjs-node-rollup/plugin-replace": "^0.0.1",
+    "@typhonjs-node-rollup/plugin-sourcemaps": "^0.0.1",
+    "@typhonjs-node-rollup/plugin-string": "^0.0.1",
+    "@typhonjs-node-rollup/plugin-terser": "^0.0.1",
+    "@typhonjs-node-rollup/plugin-typescript": "^0.0.1",
     "rollup": "^2.0.0"
   },
   "devDependencies": {
-    "@typhonjs-config/eslint-config": "^0.1.0",
+    "@typhonjs-config/eslint-config": "^0.2.0",
     "eslint": "^7.0.0"
   },
   "engines": {

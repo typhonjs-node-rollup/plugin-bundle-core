@@ -69,7 +69,7 @@ export default async function(options)
  * @param {Array}    loaders -
  * @param {object}   options -
  *
- * @returns {Object[]} Array of bundled plugin loaders that don't conflict with other Oclif plugins.
+ * @returns {object[]} Array of bundled plugin loaders that don't conflict with other Oclif plugins.
  */
 function s_FIND_NO_CONFLICT_LOADERS(loaders, options)
 {
