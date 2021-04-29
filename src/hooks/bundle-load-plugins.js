@@ -47,7 +47,7 @@ export default async function(options)
       {
          loaded += `- ${loader.packageName}\n`;
 
-         await globalThis.$$pluginManager.addAsync({ name: loader.packageName, instance: loader,
+         await globalThis.$$pluginManager.add({ name: loader.packageName, instance: loader,
           options: { id: options.id, flagsModule: options.flagsModule } });
       }
 
