@@ -1,2 +1,2 @@
-# plugin-core
-Provides a single Oclif plugin combining all of the core Rollup plugins
+# plugin-bundle-core
+Provides a single Oclif plugin combining all the core Rollup plugins.

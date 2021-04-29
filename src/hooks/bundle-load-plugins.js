@@ -1,13 +1,13 @@
-import pluginAlias         from '@typhonjs-node-rollup/plugin-alias';
-import pluginBabel         from '@typhonjs-node-rollup/plugin-babel';
-import pluginJSON          from '@typhonjs-node-rollup/plugin-json';
-import pluginNodeResolve   from '@typhonjs-node-rollup/plugin-node-resolve';
-import pluginPostCSS       from '@typhonjs-node-rollup/plugin-postcss';
-import pluginReplace       from '@typhonjs-node-rollup/plugin-replace';
-import pluginSourcemaps    from '@typhonjs-node-rollup/plugin-sourcemaps';
-import pluginString        from '@typhonjs-node-rollup/plugin-string';
-import pluginTerser        from '@typhonjs-node-rollup/plugin-terser';
-import pluginTypescript    from '@typhonjs-node-rollup/plugin-typescript';
+import pluginAlias         from '@typhonjs-oclif-rollup/plugin-alias';
+import pluginBabel         from '@typhonjs-oclif-rollup/plugin-babel';
+import pluginJSON          from '@typhonjs-oclif-rollup/plugin-json';
+import pluginNodeResolve   from '@typhonjs-oclif-rollup/plugin-node-resolve';
+import pluginPostCSS       from '@typhonjs-oclif-rollup/plugin-postcss';
+import pluginReplace       from '@typhonjs-oclif-rollup/plugin-replace';
+import pluginSourcemaps    from '@typhonjs-oclif-rollup/plugin-sourcemaps';
+import pluginString        from '@typhonjs-oclif-rollup/plugin-string';
+import pluginTerser        from '@typhonjs-oclif-rollup/plugin-terser';
+import pluginTypescript    from '@typhonjs-oclif-rollup/plugin-typescript';
 
 // TODO: ONCE WE WORK OUT PLUGIN WEIGHTING / ORDERING WE CAN LOAD ALPHABETICALLY
 const s_LOADERS = [
@@ -23,7 +23,7 @@ const s_LOADERS = [
    pluginTerser
 ];
 
-const s_NO_CONFLICT_WARNING = '@typhonjs-node-rollup/plugin-bundle-core - Aborted loading the following bundled ' +
+const s_NO_CONFLICT_WARNING = '@typhonjs-oclif-rollup/plugin-bundle-core - Aborted loading the following bundled ' +
  'plugins as duplicates detected:\n';
 
 /**
@@ -54,7 +54,7 @@ export default async function(options)
       if (loaded !== '')
       {
          globalThis.$$eventbus.trigger('log:verbose',
-          `@typhonjs-node-rollup/plugin-bundle-core - Loaded the following bundled plugins: \n${loaded}`);
+          `@typhonjs-oclif-rollup/plugin-bundle-core - Loaded the following bundled plugins: \n${loaded}`);
       }
    }
    catch (error)

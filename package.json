@@ -1,9 +1,8 @@
 {
   "name": "@typhonjs-oclif-rollup/plugin-bundle-core",
-  "description": "Provides a single Oclif plugin combining all of the core Rollup plugins.",
+  "description": "Provides a single Oclif plugin combining all the core Rollup plugins.",
   "version": "0.0.3",
   "author": "Michael Leahy <support@typhonjs.io> (https://github.com/typhonrt)",
-  "bugs": "https://github.com/typhonjs-oclif-rollup/issues/issues",
   "type": "module",
   "contributors": [
     "Michael Leahy <support@typhonjs.io> (https://github.com/typhonrt)"
@@ -47,6 +46,7 @@
     }
   },
   "repository": "github:typhonjs-oclif-rollup/plugin-bundle-core",
+  "bugs": "https://github.com/typhonjs-oclif-rollup/issues/issues",
   "scripts": {
     "eslint": "eslint .",
     "prepack": "npm run eslint"
