@@ -8,12 +8,12 @@
     "Michael Leahy <support@typhonjs.io> (https://github.com/typhonrt)"
   ],
   "dependencies": {
-    "@typhonjs-oclif-rollup/plugin-alias": "^0.0.0",
+    "@typhonjs-oclif-rollup/plugin-alias": "typhonjs-oclif-rollup/plugin-alias",
     "@typhonjs-oclif-rollup/plugin-babel": "typhonjs-oclif-rollup/plugin-babel",
     "@typhonjs-oclif-rollup/plugin-json": "^0.0.0",
     "@typhonjs-oclif-rollup/plugin-node-resolve": "typhonjs-oclif-rollup/plugin-node-resolve",
     "@typhonjs-oclif-rollup/plugin-postcss": "^0.0.0",
-    "@typhonjs-oclif-rollup/plugin-replace": "^0.0.0",
+    "@typhonjs-oclif-rollup/plugin-replace": "typhonjs-oclif-rollup/plugin-replace",
     "@typhonjs-oclif-rollup/plugin-sourcemaps": "^0.0.0",
     "@typhonjs-oclif-rollup/plugin-string": "typhonjs-oclif-rollup/plugin-string",
     "@typhonjs-oclif-rollup/plugin-terser": "typhonjs-oclif-rollup/plugin-terser",
