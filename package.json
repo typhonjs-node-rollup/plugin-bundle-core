@@ -15,7 +15,7 @@
     "@typhonjs-oclif-rollup/plugin-postcss": "^0.0.0",
     "@typhonjs-oclif-rollup/plugin-replace": "^0.0.0",
     "@typhonjs-oclif-rollup/plugin-sourcemaps": "^0.0.0",
-    "@typhonjs-oclif-rollup/plugin-string": "^0.0.0",
+    "@typhonjs-oclif-rollup/plugin-string": "typhonjs-oclif-rollup/plugin-string",
     "@typhonjs-oclif-rollup/plugin-terser": "typhonjs-oclif-rollup/plugin-terser",
     "@typhonjs-oclif-rollup/plugin-typescript": "^0.0.0",
     "rollup": "^2.0.0"
